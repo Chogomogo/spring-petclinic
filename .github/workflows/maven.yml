@@ -1,19 +1,28 @@
-name: Java Maven Build
+name: Maven Test on Self-Hosted GCP Runner
 
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
 
 jobs:
-  build:
+  test-on-self-hosted:
     runs-on: self-hosted
+    name: Self Hosted GCP VM
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+      - name: Maven Run 1
+        run: mvn clean compile
 
-      - name: Build with Maven
+      - name: Maven Run 2
+        run: mvn clean compile
+
+      - name: Maven Run 3
+        run: mvn clean compile
+
+      - name: Maven Run 4
+        run: mvn clean compile
+
+      - name: Maven Run 5
         run: mvn clean compile
